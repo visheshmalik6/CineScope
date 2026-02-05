@@ -6,6 +6,7 @@ import { MovieProvider } from "./contexts/MovieContext";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useAuth } from "./contexts/AuthContext";
+import Landing from "./pages/landing";
 
 import "./css/App.css";
 
@@ -13,12 +14,14 @@ function App() {
   const { user } = useAuth();
 
   // 🔐 NOT LOGGED IN → ONLY AUTH PAGES
+
   if (!user) {
     return (
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     );
   }
