@@ -1,0 +1,139 @@
+/* 1. THE FULL PAGE WRAPPER */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 50% 50%, #1e133a 0%, #0a0812 100%);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background nebula for the login page only */
+.auth-page::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--accent-glow, rgba(157, 80, 187, 0.2));
+  filter: blur(120px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* 2. THE FORM CONTAINER (Floating Glass) */
+.auth-form {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 3.5rem 2.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(157, 80, 187, 0.2);
+  border-radius: 32px; /* Generous curves */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: modalPop 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-form h2 {
+  font-size: 2.5rem;
+  font-weight: 200; /* Sophisticated light weight */
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+  text-align: center;
+  background: linear-gradient(to bottom, #fff, var(--accent-purple, #9d50bb));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3. INPUTS (Borderless Style) */
+.auth-form input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.auth-form input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-purple, #9d50bb);
+  box-shadow: 0 0 15px rgba(157, 80, 187, 0.2);
+}
+
+.auth-form input::placeholder {
+  color: #8e86b3;
+  font-weight: 300;
+}
+
+/* 4. THE ACTION BUTTON */
+.auth-form button {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #9d50bb, #6e48aa);
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.auth-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(110, 72, 170, 0.4);
+  filter: brightness(1.1);
+}
+
+/* 5. ERRORS & LINKS */
+.auth-error {
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  color: #ff4757;
+  padding: 0.75rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.auth-form p {
+  text-align: center;
+  color: #8e86b3;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+.auth-form p a {
+  color: var(--accent-purple, #9d50bb);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.auth-form p a:hover {
+  text-shadow: 0 0 10px rgba(157, 80, 187, 0.5);
+  text-decoration: underline;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 480px) {
+  .auth-form {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+  }
+}

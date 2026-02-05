@@ -1,0 +1,121 @@
+:root {
+  /* Modern Typography Stack */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  /* The Amethyst Palette */
+  --bg-deep: #0a0812;          /* True deep violet-black */
+  --accent-purple: #9d50bb;    /* Amethyst primary */
+  --accent-glow: #6e48aa;      /* Electric violet secondary */
+  --text-main: #f0edff;        /* Off-white purple tint */
+  --text-dim: #8e86b3;         /* Muted cosmic grey */
+  
+  /* Shared Glass Logic */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(157, 80, 187, 0.2);
+  
+  color-scheme: dark;
+  color: var(--text-main);
+  background-color: var(--bg-deep);
+
+  /* Performance & Smoothness */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-deep);
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  /* Cinematic Lighting: A soft purple nebula at the top */
+  background: 
+    radial-gradient(circle at 50% -10%, rgba(110, 72, 170, 0.15) 0%, transparent 60%),
+    var(--bg-deep);
+  background-attachment: fixed;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Typography Overhaul - Editorial Style */
+h1, h2, h3 {
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em; /* Tighter for a modern look */
+  color: #ffffff;
+}
+
+/* Premium Link Logic */
+a {
+  font-weight: 500;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-purple);
+  text-shadow: 0 0 10px rgba(157, 80, 187, 0.5);
+}
+
+/* Borderless Glass Button */
+button {
+  appearance: none;
+  border: 1px solid var(--glass-border);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 50px; /* Pill shape */
+  padding: 0.8rem 1.8rem;
+  background-color: var(--glass-bg);
+  color: var(--text-main);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.5px;
+}
+
+button:hover {
+  background-color: var(--accent-purple);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(110, 72, 170, 0.3);
+  color: white;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Custom Cosmic Scrollbar */
+::-webkit-scrollbar {
+  width: 6px; /* Thinner is more premium */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, transparent, var(--accent-purple), transparent);
+  border-radius: 10px;
+}

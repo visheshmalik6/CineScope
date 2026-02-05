@@ -1,0 +1,119 @@
+/* Note: These styles rely on the variables defined in your Global :root */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Reverse the gradient direction for Register to differentiate from Login */
+  background: radial-gradient(circle at 80% 20%, #1e133a 0%, #0a0812 100%);
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 440px; /* Slightly wider to feel "open" for new users */
+  padding: 3.5rem 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(30px) saturate(160%);
+  -webkit-backdrop-filter: blur(30px) saturate(160%);
+  border: 1px solid rgba(157, 80, 187, 0.15);
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* A smooth "Scale-Up" entrance */
+  animation: authEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-form h2 {
+  font-size: 2.5rem;
+  font-weight: 200;
+  letter-spacing: -1.5px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  /* Violet glow for the title */
+  background: linear-gradient(135deg, #fff 0%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 1.1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(157, 80, 187, 0.1);
+  border-radius: 16px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.auth-form input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 20px rgba(157, 80, 187, 0.15);
+  transform: scale(1.01); /* Subtle "growth" feedback on focus */
+}
+
+.auth-form button {
+  margin-top: 1rem;
+  padding: 1.1rem;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-glow));
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(110, 72, 170, 0.5);
+  filter: brightness(1.1);
+}
+
+.auth-error {
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid rgba(255, 71, 87, 0.2);
+  color: #ff4757;
+  padding: 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  text-align: center;
+  /* Shake animation for errors */
+  animation: shake 0.4s ease;
+}
+
+/* Animations */
+@keyframes authEntrance {
+  from { opacity: 0; transform: scale(0.95) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.auth-form p {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.auth-form p a {
+  color: var(--accent-purple);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.auth-form p a:hover {
+  text-shadow: 0 0 10px var(--accent-glow);
+}

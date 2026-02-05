@@ -1,0 +1,121 @@
+:root {
+  --nav-bg: rgba(13, 10, 25, 0.8); /* Deep midnight violet */
+  --accent-purple: #9d50bb;       /* Rich amethyst */
+  --accent-glow: #6e48aa;         /* Electric violet */
+  --text-bright: #f0edff;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  /* Soft glassmorphism with a violet tint */
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  padding: 1.5rem 8%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Subtle purple top-glow border */
+  border-bottom: 1px solid rgba(157, 80, 187, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.scrolled {
+  padding: 1rem 8%;
+  background-color: rgba(10, 8, 20, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  /* Premium Gradient Text */
+  background: linear-gradient(135deg, #fff 30%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  position: relative;
+}
+
+.navbar-brand::before {
+  content: '';
+  position: absolute;
+  inset: -5px -10px;
+  background: var(--accent-purple);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.navbar-brand:hover::before {
+  opacity: 0.3; /* Subtle glow on hover */
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #b0a8d6; /* Muted violet-grey */
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px; /* Pill shape */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Premium Hover: "Liquid" background fill */
+.nav-link:hover {
+  color: var(--text-bright);
+  background: rgba(157, 80, 187, 0.15);
+}
+
+.nav-link.active {
+  color: white;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-glow));
+  box-shadow: 0 4px 15px rgba(110, 72, 170, 0.4);
+}
+
+/* Remove the old underline and use a "spotlight" effect instead */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+}
+
+.nav-link:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 5%;
+  }
+  
+  .navbar-links {
+    gap: 0.2rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}

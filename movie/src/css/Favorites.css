@@ -1,0 +1,111 @@
+:root {
+  /* Inherit the new palette */
+  --accent-purple: #9d50bb;
+  --accent-glow: rgba(157, 80, 187, 0.3);
+  --text-main: #f0edff;
+  --text-dim: #8e86b3;
+  --transition-premium: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.favorites {
+  padding: clamp(3rem, 10vh, 6rem) 2rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.favorites h2 {
+  margin-bottom: 4rem; /* More space for a luxury feel */
+  text-align: left;    /* Left-aligned feels more like a modern gallery */
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 200;    /* Ultra-light weight is very premium */
+  letter-spacing: -1px;
+  color: var(--text-main);
+  background: linear-gradient(to right, #fff, var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 1. THE EMPTY STATE: No more box, just floating elements */
+.favorites-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem;
+  background: transparent; /* Box removed */
+  border: none;            /* Border removed */
+  margin: 0 auto;
+}
+
+/* Animate a soft glow behind the empty state text */
+.favorites-empty::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: var(--accent-glow);
+  filter: blur(100px);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.favorites-empty h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  background: none;
+  -webkit-text-fill-color: var(--accent-purple);
+}
+
+.favorites-empty p {
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  font-weight: 300;
+  max-width: 350px;
+  line-height: 1.6;
+}
+
+/* 2. THE GRID: Optimized for floating posters */
+.movies-grid {
+  display: grid;
+  /* Larger min-width for posters makes them feel more important */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 4rem 3rem; /* Larger vertical gap for text breathing room */
+}
+
+/* Staggered entry animation */
+.movies-grid > * {
+  opacity: 0;
+  animation: floatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .favorites {
+    padding: 4rem 1.5rem;
+  }
+  
+  .favorites h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 2.5rem 1.5rem;
+  }
+}
