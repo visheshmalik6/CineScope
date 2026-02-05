@@ -1,0 +1,158 @@
+:root {
+  --accent-purple: #9d50bb;
+  --accent-glow: rgba(157, 80, 187, 0.3);
+  --bg-deep: #0a0812;
+  --text-dim: #8e86b3;
+  --transition-premium: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.landing {
+  min-height: 100vh;
+  /* Cinematic deep violet gradient */
+  background: radial-gradient(circle at 50% 100%, #1e133a 0%, var(--bg-deep) 80%);
+  color: white;
+  padding: clamp(4rem, 15vh, 8rem) 1.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 1. HERO SECTION: Borderless & Airy */
+.hero {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto clamp(4rem, 10vh, 8rem);
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem); /* Responsive fluid header */
+  font-weight: 200; /* Sophisticated light weight */
+  letter-spacing: -2px;
+  line-height: 1.1;
+  background: linear-gradient(to bottom, #fff, var(--accent-purple));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  margin: 2rem auto;
+  color: var(--text-dim);
+  max-width: 600px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* 2. BUTTONS: Glow & Glass */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.btn {
+  padding: 1rem 2.5rem;
+  border-radius: 50px; /* Pill shape */
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: var(--transition-premium);
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--accent-purple), #6e48aa);
+  color: white;
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(110, 72, 170, 0.5);
+  filter: brightness(1.1);
+}
+
+.secondary {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-purple);
+}
+
+/* 3. FEATURES: Floating & Borderless */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature {
+  background: transparent; /* Box removed */
+  padding: 1rem;
+  text-align: center;
+  transition: var(--transition-premium);
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+}
+
+.feature h3 {
+  margin: 1.25rem 0 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.feature p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* 4. MOBILE OPTIMIZATION */
+@media (max-width: 1024px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid for tablets */
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .landing {
+    padding-top: 6rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column; /* Stack buttons on mobile */
+    align-items: stretch;
+    gap: 1rem;
+    padding: 0 2rem;
+  }
+
+  .btn {
+    text-align: center;
+  }
+
+  .features {
+    grid-template-columns: 1fr; /* Single column for phones */
+    gap: 4rem; /* More space between stacked features */
+    text-align: center;
+  }
+
+  .feature h3 {
+    font-size: 1.4rem;
+  }
+}
