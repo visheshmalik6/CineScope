@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useAuth } from "./contexts/AuthContext";
 import Landing from "./pages/landing";
+import Footer from "./components/Footer";
 
 import "./css/App.css";
 
@@ -30,6 +31,7 @@ function App() {
   return (
     <MovieProvider>
       <NavBar />
+
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,6 +39,8 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+
+      <Footer /> {/* 👈 ADD THIS */}
     </MovieProvider>
   );
 }
